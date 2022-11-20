@@ -90,11 +90,144 @@ const CADENA_CONEXION =
             type : Datatypes.STRING(200),
             allowNull : false
         }
-
     },
     {
         timestamps : false,
         freezeTableName : true
     })
-    const orden_producto = sequelize.define("orden_producto",)
+    const orden_producto = sequelize.define("orden_producto",{
+        id : {
+            primaryKey: true,
+            type: Datatypes.UUID,
+            defaultValue : sequelize.UUIDV4
+        },
+        orden_id : {
+            type: Datatypes.UUID,
+            defaultValue : sequelize.UUIDV4
+        },
+        productos_id : {
+            type: Datatypes.UUID,
+            defaultValue : sequelize.UUIDV4
+        }
+    },
+    {
+        timestamps : false,
+        freezeTableName : true
+    })
+    const pcarmado = sequelize.define("pcarmado",{
+        id : {
+            primaryKey: true,
+            type: Datatypes.UUID,
+            defaultValue : sequelize.UUIDV4
+        },
+        nombre: {
+            type : Datatypes.STRING(200),
+            allowNull : false
+        },
+        descripcion: {
+            type : Datatypes.STRING(200),
+            allowNull : false
+        }
+    },
+    {
+        timestamps : false,
+        freezeTableName : true
+    })
+    const pcarmado_productos = sequelize.define("pcarmado_productos",{
+        id: {
+            primaryKey: true,
+            type: Datatypes.UUID,
+            defaultValue : sequelize.UUIDV4
+        },
+        pcarmado_id: {
+            
+            type: Datatypes.UUID,
+            defaultValue : sequelize.UUIDV4
+        },
+        productos_id: {
+            
+            type: Datatypes.UUID,
+            defaultValue : sequelize.UUIDV4
+        }
+    },
+    {
+        timestamps : false,
+        freezeTableName : true
+    })
+    const reporte =  sequelize.define("reporte",{
+        id: {
+            primaryKey: true,
+            type: Datatypes.UUID,
+            defaultValue : sequelize.UUIDV4
+        },
+        usuario_id: {
+            
+            type: Datatypes.UUID,
+            defaultValue : sequelize.UUIDV4
+        },
+        correo:{
+            type : Datatypes.STRING(200),
+            allowNull : false
+        },
+        nombre:{
+            type : Datatypes.STRING(200),
+            allowNull : false
+        },
+        telefono:{
+            type : Datatypes.STRING(200),
+            allowNull : false
+        },
+        asunto:{
+            type : Datatypes.STRING(200),
+            allowNull : false
+        },
+        descripcion:{
+            type : Datatypes.STRING(200),
+            allowNull : false
+        },
+    },
+    {
+        timestamps : false,
+        freezeTableName : true
+    })
 
+    const reseña =  sequelize.define("reseña",{
+        id: {
+            primaryKey: true,
+            type: Datatypes.UUID,
+            defaultValue : sequelize.UUIDV4
+        },
+        usuario_id: {
+            
+            type: Datatypes.UUID,
+            defaultValue : sequelize.UUIDV4
+        },
+        puntaje:{
+            type : Datatypes.STRING(200),
+            allowNull : false
+        },
+        comentario:{
+            type : Datatypes.STRING(200),
+            allowNull : false
+        },
+        video:{
+            type : Datatypes.STRING(200),
+            allowNull : false
+        },
+        link:{
+            type : Datatypes.STRING(200),
+            allowNull : false
+        },
+        tipo_reseña:{
+            type : Datatypes.STRING(200),
+            allowNull : false
+        },
+    },
+    {
+        timestamps : false,
+        freezeTableName : true
+    })
+
+    //Relaciones
+
+    
