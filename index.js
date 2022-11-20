@@ -229,5 +229,60 @@ const CADENA_CONEXION =
     })
 
     //Relaciones
+    //reporte *-------->1 usuario
+    reporte.belongsTo(usuario, {
+        foreignKey : "usuario_id"
+    })
+    usuario.hasMany(reporte, {
+        foreignKey : "id"
+    })
 
+    //reseña*------->1 usuario
+    reseña.belongsTo(usuario, {
+        foreignKey : "usuario_id"
+    })
+    usuario.hasMany(reseña, {
+        foreignKey : "id"
+    })
     
+    //usuario 1 --------> * orden
+    usuario.belongsTo(orden, {
+        foreignKey : "usuario_id"
+    })
+    orden.hasMany(usuario, {
+        foreignKey : "id"
+    })
+    
+    //orden 1 ---------> * orden_producto
+    orden_producto.belongsTo(orden, {
+        foreignKey : "carrera_id"
+    })
+    orden.hasMany(orden_producto, {
+        foreignKey : "id"
+    })
+
+    //producto 1 -------> * orden_producto
+    producto.belongsTo(orden_producto, {
+        foreignKey : "carrera_id"
+    })
+    orden_producto.hasMany(producto, {
+        foreignKey : "id"
+    })
+
+    //producto 1 --------> * pcarmado:producto
+    pcarmado_productos.belongsTo(producto, {
+        foreignKey : "carrera_id"
+    })
+    producto.hasMany(pcarmado_productos, {
+        foreignKey : "id"
+    })
+
+    //pcarmado_prducto * ---------> 1 pcarmado
+    pcarmado_productos.belongsTo(pcarmado, {
+        foreignKey : "carrera_id"
+    })
+    pcarmado.hasMany(pcarmado_productos, {
+        foreignKey : "id"
+    })
+
+
